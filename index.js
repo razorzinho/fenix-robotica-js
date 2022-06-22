@@ -5,10 +5,10 @@ require('dotenv').config()
 client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
 client.once('ready', () => {
-    console.log(`Bot on-line! Nome ${client.user.name}`)
+    console.log(`Bot on-line! Nome ${client.user.username}`)
     console.log(`ID do bot: ${config.clientId}`)
     console.log(`ID do servidor: ${config.guildId}`)
-    client.user.setPresence({ activities: [{ name: 'Observando fenixempire.net.br' }], status: 'online', type: 'WATCHING'} );
+    client.user.setActivity('fenixempire.net.br', { type: 'WATCHING' });
 })
 
 client.login(process.env.TOKEN)
