@@ -1,4 +1,4 @@
-const discord = require('discord.js')
+const { Client, Intents } = require('discord.js');
 const config = require('./config.json')
 require('dotenv').config()
 
