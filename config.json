@@ -1,4 +1,16 @@
 {
-    "guildId": "776945216220561408",
-    "clientId": "792768138638131212"
+    "clientEnv": {
+        "guildId": "776945216220561408",
+        "clientId": "792768138638131212"
+    },
+    "guildChannels": {
+
+    },
+    "moduleSettings": {
+        "mod": {
+            "enabled": true,
+            "logsChannel": 77777777777777777,
+            "test": "test"
+        }
+    }
 }
