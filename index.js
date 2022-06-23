@@ -16,7 +16,7 @@ client.once('ready', client => {
 	console.log(`ID do servidor: ${config.guildId}`)
 	client.user.setActivity('fenixempire.net.br', { type: 'WATCHING' });
 	client.user.setStatus('dnd');
-}
+});
 
 // for (const file of eventFiles) {
 // 	const filePath = path.join(eventsPath, file);
