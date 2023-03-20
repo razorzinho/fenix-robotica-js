@@ -1,16 +1,91 @@
 {
-    "clientEnv": {
-        "guildId": "776945216220561408",
-        "clientId": "792768138638131212"
+    "client": {
+        "client_id": "1086656710078386196",
+        "allowed_guild_ids": {
+            "1010943771451592714": true,
+            "382520701594107905": true
+        },
+        "dev_guild_id": "1010943771451592714",
+        "admin_perms_roles": {
+            "382520701594107905": [],
+            "1010943771451592714": []
+        }
     },
-    "guildChannels": {
+    "modules": {
+        "automatic": {
+            "tickets": {
+                "message": {
+                    "embed": {
+                        "fields": {
 
-    },
-    "moduleSettings": {
-        "mod": {
-            "enabled": true,
-            "logsChannel": 77777777777777777,
-            "test": "test"
+                        }
+                    }
+                }
+            }
+        },
+        "tickets": {
+            "382520701594107905": {
+                "donation": {
+                    "channelId": 1023723546616283167,
+                    "type": "form",
+                    "ticketMode": "threads",
+                    "form": {
+                        "fiels": {
+                            "donationTarget": {
+                                "placeHolder": "Você mesmo ou outra pessoa (link do perfil Steam)"
+                            },
+                            "paymentMethod": {
+                                "placeHolder": ""
+                            },
+                            "contactEmail": {
+                                "placeHolder": ""
+                            },
+                            "phoneNumber": {
+                                "placeHolder": ""
+                            }
+                        }
+                    },
+                    "ticketChannel": {
+                        "namePattern": "%id-doação-%n-%d",
+                        "permissions": {
+                            "roles": [
+                                936062518462390302
+                            ]
+                        }
+                    }
+                }
+            },
+            "1010943771451592714": {
+                "donation": {
+                    "channelId": 1087173195435606147,
+                    "type": "form",
+                    "ticketMode": "threads",
+                    "form": {
+                        "fiels": {
+                            "donationTarget": {
+                                "placeHolder": "Você mesmo ou outra pessoa (link do perfil Steam)"
+                            },
+                            "paymentMethod": {
+                                "placeHolder": ""
+                            },
+                            "contactEmail": {
+                                "placeHolder": ""
+                            },
+                            "phoneNumber": {
+                                "placeHolder": ""
+                            }
+                        }
+                    },
+                    "ticketChannel": {
+                        "namePattern": "%id-doação-%n-%d",
+                        "permissions": {
+                            "roles": [
+                                1041417371417596006
+                            ]
+                        }
+                    }
+                }
+            }
         }
     }
 }
