@@ -1,5 +1,4 @@
 const {Client, Collection, GatewayIntentBits} = require("discord.js")
-const config = require('./config.json')
 require("dotenv").config()
 const fs = require("node:fs")
 const path = require("node:path")
@@ -7,7 +6,27 @@ const path = require("node:path")
 // ------------------------------------------------------------------
 // Now, we must initialize the events for our client
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds] })
+// não especificar intents para habilitar todos os permitidos ao bot
+const client = new Client({ intents: [3276799] }) // todos os intents por bits
+    // GatewayIntentBits.Guilds, 
+    // GatewayIntentBits.MessageContent, 
+    // GatewayIntentBits.DirectMessageReactions,
+    // GatewayIntentBits.DirectMessageTyping,
+    // GatewayIntentBits.DirectMessages,
+    // GatewayIntentBits.GuildModeration,
+    // GatewayIntentBits.GuildEmojisAndStickers,
+    // GatewayIntentBits.GuildIntegrations,
+    // GatewayIntentBits.GuildInvites,
+    // GatewayIntentBits.GuildMembers,
+    // GatewayIntentBits.GuildMessageReactions,
+    // GatewayIntentBits.GuildMessageTyping,
+    // GatewayIntentBits.GuildMessages,
+    // GatewayIntentBits.GuildPresences,
+    // GatewayIntentBits.GuildScheduledEvents,
+    // GatewayIntentBits.GuildVoiceStates,
+    // GatewayIntentBits.GuildWebhooks 
+    // --- todos os intents por GatewayIntentBits
+    // Sim, já sei que usar TUDO não é boa ideia, mas estou desenvolvendo, não importa.
 
 client.commands = new Collection()
 
