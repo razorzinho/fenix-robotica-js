@@ -5,6 +5,7 @@ module.exports = {
     once: false,
 
     async execute(interaction) {
+
         if (!interaction.isChatInputCommand()) return
 
         const command = interaction.client.commands.get(interaction.commandName)
@@ -24,13 +25,16 @@ module.exports = {
 
         const allowedRoles = command.permissions
 
-        for (const roleID in allowedRoles) {
+        if (command.permissions) {
+            for (const roleID in allowedRoles) {
 
-            if (member.roles.cache.some(role => role.id === allowedRoles[roleID])) {
-
-                break
+                if (member.roles.cache.some(role => role.id === allowedRoles[roleID])) {
+    
+                    break
+                }
             }
         }
+        
     
         try {
             await command.execute(interaction)

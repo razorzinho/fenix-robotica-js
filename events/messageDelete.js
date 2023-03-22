@@ -1,4 +1,4 @@
-const {Events, EmbedBuilder, codeBlock} = require("discord.js")
+const {Events, EmbedBuilder, codeBlock, userMention} = require("discord.js")
 const config = require("../config.json")
 
 module.exports = {
@@ -11,11 +11,11 @@ module.exports = {
         const embed = new EmbedBuilder()
             .setColor('DarkRed')
             .setAuthor({name: message.author.tag, iconURL: message.author.avatarURL()})
-            .setDescription(`<@${message.author.id}> apagou uma mensagem ${message.attachments.size > 0 ? "com anexos" : "sem anexos."}`)
+            .setDescription(`${userMention(message.author.id)} apagou uma mensagem ${message.attachments.size > 0 ? "com anexos" : "sem anexos."}`)
             .addFields(
                 {name: "Conteúdo da mensagem:", value: `${codeBlock(message.content)}`, inline: false}
             )
-            .setTimestamp(Date.now())
+            .setTimestamp()
 
         if (message.attachments.size > 0) {
 
