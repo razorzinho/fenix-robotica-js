@@ -20,6 +20,8 @@ module.exports = {
 
         interaction.client.user.setPresence({ status: 'offline' })
 
+        console.log(`Finalizando conexão com a API do Discord. Requisitado por ${interaction.user.tag}`)
+
         interaction.client.destroy()
     }
 }
