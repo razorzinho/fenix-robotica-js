@@ -32,6 +32,10 @@ module.exports = {
     
                     break
                 }
+
+                await interaction.reply({content: `Você não tem permissão para utilizar este comando, ${interaction.user.username}`, ephemeral: true})
+
+                return
             }
         }
         
