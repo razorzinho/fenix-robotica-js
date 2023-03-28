@@ -8,6 +8,28 @@ module.exports = {
 
         if (!interaction.isChatInputCommand()) return
 
+        if (interaction.isMessageComponent()) {
+
+            const component = interaction.client.components.get(interaction.customId)
+
+            if (!component) {
+                console.error(`Componente '${interaction.customId}' não encontrado.`)
+            }
+
+            try {
+                await component.execute(interaction)
+            } catch (error) {
+                console.error(error);
+                if (interaction.replied || interaction.deferred) {
+                    await interaction.followUp({ content: 'Houve um erro durante a execução desta requisição! Tente novamente mais tarde. Caso o erro persista, entre em contato com o desenvolvedor.', ephemeral: true })
+                } else {
+                    await interaction.reply({ content: 'Houve um erro ao tentar executar esta requisição!', ephemeral: true })
+                }
+            }
+
+            return 
+        }
+
         const command = interaction.client.commands.get(interaction.commandName)
 
         if (!command) {
