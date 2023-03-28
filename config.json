@@ -6,6 +6,11 @@
             "382520701594107905": true
         },
         "dev_guild_id": "1010943771451592714",
+        "dev_role_id": "1041417371417596006",
+        "dev_role_by_guilds": {
+            "382520701594107905": "936061514702524476",
+            "776945216220561408": "777301618654838805"
+        },
         "admin_perms_roles": {
             "382520701594107905": [
                 
@@ -19,13 +24,409 @@
         "logs": {
             "channelId": "1087535946850897970"
         },
-        "moderation": {},
+        "moderation": {
+            "messageBlockedChannels": {
+                "1087535946850897970": true
+            },
+            "officialURLS": [
+                "https://google.com",
+                "https://discord.com",
+                "https://discord.gg",
+                "https://youtube.com",
+                "https://facebook.com",
+                "https://store.steampowered.com",
+                "https://steamcommunity.com"
+            ]
+        },
         "automatic": {
             "tickets": {
-                "message": {
-                    "embed": {
-                        "fields": {
+                "messages": {
+                    "category": {
+                        "donation": {
+                            "content": "",
+                            "embeds": {
+                                "first": {
+                                    "color": "Purple",
+                                    "title": "",
+                                    "description": ""
+                                }
+                            },
+                            "channelId": "",
+                            "embed": {
+                                "fields": {
 
+                                }
+                            },
+                            "buttons": {
+
+                            }
+                        },
+                        "reports": {
+                            "content": "",
+                            "embeds": {
+
+                            },
+                            "channelId": "",
+                            "embed": {
+                                "fields": {
+
+                                }
+                            },
+                            "buttons": {
+                                
+                            }
+                        }
+                    }
+                }
+            },
+            "rolePicker": {
+                "1010943771451592714": {
+                    "messages": {
+                        "category": {
+                            "languages": {
+                                "channelId": "",
+                                "roles": {
+                                    "c_lang": {
+                                        "emoji_id": 1041441641858338877,
+                                        "role_id": 1041430785951023214,
+                                        "description": "Linguagem C"
+                                    },
+                                    "c_plus": {
+                                        "emoji_id": 1041442880973176895,
+                                        "role_id": 1041430992793116692,
+                                        "description": "Linguagem C++"
+                                    },
+                                    "c_sharp": {
+                                        "emoji_id": 1041440638132031538,
+                                        "role_id": 1041435999588327604,
+                                        "description": "Linguagem C#"
+                                    },
+                                    "dart_lang": {
+                                        "emoji_id": 1041443657586315285,
+                                        "role_id": 1041783935119654984,
+                                        "description": "Linguagem Dart"
+                                    },
+                                    "elixir": {
+                                        "emoji_id": 1041438355214307478,
+                                        "role_id": 1041434674720931901,
+                                        "description": "Linguagem Elixir"
+                                    },
+                                    "haskell": {
+                                        "emoji_id": 1041443659125620826,
+                                        "role_id": 1041786582841172000,
+                                        "description": "Linguagem Haskell"
+                                    },
+                                    "java": {
+                                        "emoji_id": 1041443662804029521,
+                                        "role_id": 1041430924744732713,
+                                        "description": "Linguagem Java"
+                                    },
+                                    "javascript": {
+                                        "emoji_id": 1041443664230101002,
+                                        "role_id": 1041431044714410105,
+                                        "description": "Linguagem JavaScript (outras versões além de client-side)"
+                                    },
+                                    "kotlin": {
+                                        "emoji_id": 1041443665693904928,
+                                        "role_id": 1041784432924835880,
+                                        "description": "Linguagem Kotlin"
+                                    },
+                                    "lua": {
+                                        "emoji_id": 1041447515427438592,
+                                        "role_id": 1041432313273253958,
+                                        "description": "Linguagem Lua"
+                                    },
+                                    "nodejs": {
+                                        "emoji_id": 1041450610903482508,
+                                        "role_id": 1041438726947082290,
+                                        "description": "Biblioteca NodeJS"
+                                    },
+                                    "perl": {
+                                        "emoji_id": 1041443669066137701,
+                                        "role_id": 1041784299990548561,
+                                        "description": "Linguagem Perl"
+                                    },
+                                    "php": {
+                                        "emoji_id": 1041450963514433686,
+                                        "role_id": 1041431912901783632,
+                                        "description": "Linguagem PHP"
+                                    },
+                                    "python": {
+                                        "emoji_id": 1041441152198520852,
+                                        "role_id": 1041430897305587864,
+                                        "description": "Linguagem Python"
+                                    },
+                                    "ruby": {
+                                        "emoji_id": 1041443670458634241,
+                                        "role_id": 1041431094735687690,
+                                        "description": "Linguagem Ruby"
+                                    },
+                                    "rust": {
+                                        "emoji_id": 1041451942599196742,
+                                        "role_id": 1041434259904282635,
+                                        "description": "Linguagem Rust"
+                                    },
+                                    "sourcepawn": {
+                                        "emoji_id": 1041451941009555608,
+                                        "role_id": 1041432799154012180,
+                                        "description": "API SourcePawn (scripting)"
+                                    },
+                                    "sql": {
+                                        "emoji_id": 1041452260238053516,
+                                        "role_id": 1041448606495948901,
+                                        "description": "Linguagem SQL (e similares)"
+                                    },
+                                    "typescript": {
+                                        "emoji_id": 1041443673575014401,
+                                        "role_id": 1041434813447553157,
+                                        "description": "Linguagem TypeScript"
+                                    },
+                                    "web_coding": {
+                                        "emoji_id":1041443674921382080,
+                                        "role_id": 1041443874280841336,
+                                        "description": "Tecnologias-base da WEB (HTML5, CSS3, JavaScript Client-side)"
+                                    }
+                                },
+                                "embed": {
+                                    "fields": {
+
+                                    }
+                                },
+                                "buttons": {
+
+                                }
+                            },
+                            "tech": {
+                                "channelId": "",
+                                "roles": {
+                                    "bash": {
+                                        "emoji_id": 1041447513795858553,
+                                        "role_id": 1041434225762639932,
+                                        "description": "Software Bash"
+                                    },
+                                    "docker": {
+                                        "emoji_id": 1041449297964703805,
+                                        "role_id": 1041444672263946400,
+                                        "description": "Software Docker"
+                                    },
+                                    "git": {
+                                        "emoji_id": 1041449296488317028,
+                                        "role_id": 1041449322367168522,
+                                        "description": "Software Git"
+                                    },
+                                    "linux": {
+                                        "emoji_id": 1041447510427832510,
+                                        "role_id": 1041444490642198548,
+                                        "description": "Sistemas Operacionais Linux"
+                                    },
+                                    "powershell": {
+                                        "emoji_id": 1041447512231391384,
+                                        "role_id": 1041448280896311386,
+                                        "description": "Terminal PowerShell (ferramentas avançadas do Windows)"
+                                    }
+                                },
+                                "embed": {
+                                    "fields": {
+
+                                    }
+                                },
+                                "buttons": {
+
+                                }
+                            }
+                        }
+                    }
+                },
+                "382520701594107905": {
+                    "messages": {
+                        "category": {
+                            "tags1": {
+                                "amogus": {
+                                    "emoji_id": 1048006963641995324,
+                                    "role_id": 893663015658999818,
+                                    "description": "Amogus"
+                                },
+                                "apex": {
+                                    "emoji_id": 1048007931263717398,
+                                    "role_id": 1048017593174331492,
+                                    "description": "Apex Legends"
+                                },
+                                "ark": {
+                                    "emoji_id": 1048006982336008283,
+                                    "role_id": 741802433105100882,
+                                    "description": "Ark Survival Evolved"
+                                },
+                                "battlebit": {
+                                    "emoji_id": 1048007947332104212,
+                                    "role_id": 1048017936272605234,
+                                    "description": "Battlebit Remastered"
+                                },
+                                "battlefield": {
+                                    "emoji_id": 1052384715333701722,
+                                    "role_id": 1052383133305151508,
+                                    "description": "Battlefield (qualquer um menos o 2042 💩)"
+                                },
+                                "cod": {
+                                    "emoji_id": 1048007005165588490,
+                                    "role_id": 962436803967741963,
+                                    "description": "Call Of Duty"
+                                },
+                                "csgo": {
+                                    "emoji_id": 1048007970774056960,
+                                    "role_id": 893879378893750282,
+                                    "description": "Counter Strike: Global Offensive"
+                                },
+                                "dbd": {
+                                    "emoji_id": 1048009163508305920,
+                                    "role_id": 893189445644337202,
+                                    "description": "Dead By Daylight"
+                                },
+                                "drg": {
+                                    "emoji_id": 1048008234809700413,
+                                    "role_id": 941702242245939250,
+                                    "description": "Deep Rock Galactic"
+                                },
+                                "dst": {
+                                    "emoji_id": 1048009761578307725,
+                                    "role_id": 937350698876665896,
+                                    "description": "Don't Starve Together"
+                                },
+                                "dota": {
+                                    "emoji_id": 1048007025541513277,
+                                    "role_id": 1048017449586532412,
+                                    "description": "Dota 2"
+                                },
+                                "fall_guys": {
+                                    "emoji_id": 1048007040737493062,
+                                    "role_id": 893884707773759559,
+                                    "description": "Fall Guys"
+                                },
+                                "football": {
+                                    "emoji_id": 1052384350412480613,
+                                    "role_id": 1052383150162071662,
+                                    "description": "FIFA/PES (jogos de futebol on-line)"
+                                },
+                                "f1": {
+                                    "emoji_id": 1048019805569024071,
+                                    "role_id": 1027763342560997377,
+                                    "description": "Formula 1"
+                                },
+                                "fortnite": {
+                                    "emoji_id": 1048007055803433081,
+                                    "role_id": 1048017956916957204,
+                                    "description": "Fortnite"
+                                },
+                                "gwyf": {
+                                    "emoji_id": 1048019923684823180,
+                                    "role_id": 893685722341601391,
+                                    "description": "Golf With Your Friends"
+                                },    
+                                "gtav": {
+                                    "emoji_id": 1048008151074607185,
+                                    "role_id": 1048017989204717649,
+                                    "description": "GTA Online"
+                                },
+                                "guild_wars": {
+                                    "emoji_id": 1048008410311966770,
+                                    "role_id": 1048016108214550589,
+                                    "description": "Guild Wars 2"
+                                },            
+                                "insurgency": {
+                                    "emoji_id": 1048008353978257579,
+                                    "role_id": 1048017856526303294,
+                                    "description": "Insurgency"
+                                },
+                                "kf2": {
+                                    "emoji_id": 1048008310965669979,
+                                    "role_id": 1007275063466278913,
+                                    "description": "Killing Floor"
+                                }
+                            },
+                            "tags2": {
+                                "lol": {
+                                    "emoji_id": 1048007068914810990,
+                                    "role_id": 1048017584219492402,
+                                    "description": "League of Legends"
+                                },
+                                "l4d": {
+                                    "emoji_id": 1048010176080396370,
+                                    "role_id": 937350586045722715,
+                                    "description": "Left 4 Dead"
+                                },
+                                "minecraft": {
+                                    "emoji_id": 1048007083401945089,
+                                    "role_id": 911307390484381707,
+                                    "description": "Minecraft"
+                                },
+                                "overcooked": {
+                                    "emoji_id": 1048007098946043985,
+                                    "role_id": 1048016763608109076,
+                                    "description": "Overcooked"
+                                },
+                                "overwatch": {
+                                    "emoji_id": 1048007119418429550,
+                                    "role_id": 1031230132364517438,
+                                    "description": "Overwatch"
+                                },
+                                "phasmophobia": {
+                                    "emoji_id": 1048007135201591397,
+                                    "role_id": 893886056565473321,
+                                    "description": "Phasmophobia"
+                                },
+                                "project_zomboid": {
+                                    "emoji_id": 1048008287481757726,
+                                    "role_id": 999062249228488835,
+                                    "description": "Project Zomboid"
+                                },
+                                "pummel_party": {
+                                    "emoji_id": 1048008539643318442,
+                                    "role_id": 893884891203260486,
+                                    "description": "Pummel Party"
+                                },
+                                "r6": {
+                                    "emoji_id": 1048008561852157992,
+                                    "role_id": 1047999941194301581,
+                                    "description": "Rainbow Six Siege"
+                                },
+                                "scp": {
+                                    "emoji_id": 1048008579334025246,
+                                    "role_id": 1048011230465511434,
+                                    "description": "SCP"
+                                },
+                                "squad": {
+                                    "emoji_id": 1048010190106148874,
+                                    "role_id": 1048010925325688983,
+                                    "description": "Squad"
+                                },
+                                "stardew_valley": {
+                                    "emoji_id": 1048007300432003113,
+                                    "role_id": 894414035053842442,
+                                    "description": "Stardew Valley"
+                                },
+                                "swat": {
+                                    "emoji_id": 1048015869948731472,
+                                    "role_id": 1047999901205807194,
+                                    "description": "SWAT 4"
+                                },
+                                "tf2": {
+                                    "emoji_id": 1048008645503373332,
+                                    "role_id": 1048017523787964547,
+                                    "description": "Team Fortress 2"
+                                },
+                                "ttt": {
+                                    "emoji_id": 1048007171700437033,
+                                    "role_id": 939649591668789279,
+                                    "description": "Trouble in Terrorist Town (nosso servidor: steam://connect/131.196.196.197:27380)"
+                                },
+                                "valorant": {
+                                    "emoji_id": 1048007186506338316,
+                                    "role_id": 970310169621843988,
+                                    "description": "Valorant"
+                                }
+                            },
+                            "tags3": {
+
+                            }
                         }
                     }
                 }
@@ -34,7 +435,7 @@
         "tickets": {
             "382520701594107905": {
                 "donation": {
-                    "channelId": 1023723546616283167,
+                    "channelId": "1023723546616283167",
                     "type": "form",
                     "ticketMode": "threads",
                     "form": {
@@ -57,7 +458,7 @@
                         "namePattern": "%id-doação-%n-%d",
                         "permissions": {
                             "roles": [
-                                936062518462390302
+                                "936062518462390302"
                             ]
                         }
                     }
@@ -65,7 +466,7 @@
             },
             "1010943771451592714": {
                 "donation": {
-                    "channelId": 1087173195435606147,
+                    "channelId": "1087173195435606147",
                     "type": "form",
                     "ticketMode": "threads",
                     "form": {
@@ -88,7 +489,7 @@
                         "namePattern": "%id-doação-%n-%d",
                         "permissions": {
                             "roles": [
-                                1041417371417596006
+                                "1041417371417596006"
                             ]
                         }
                     }
