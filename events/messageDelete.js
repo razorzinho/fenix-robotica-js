@@ -1,11 +1,17 @@
 const {Events, EmbedBuilder, codeBlock, userMention} = require("discord.js")
+const fs = require('node:fs')
 const config = require("../config.json")
+const utils = require('../utils/download.js')
 
 module.exports = {
     name: Events.MessageDelete,
     once: false,
 
     async execute(message) {
+        if (message.author.bot) {
+            return
+        }
+
         const channel = await message.guild.channels.fetch(config.modules.logs.channelId)
 
         const embed = new EmbedBuilder()
@@ -19,11 +25,17 @@ module.exports = {
 
         if (message.attachments.size > 0) {
 
+            const targetDir = `${__dirname}/../tempFiles`
+
             let f = []
 
             message.attachments.forEach((att) => {
 
-                f.push(att.url)
+                let targetFileName = `${att.name}-${att.id}`
+
+                let tempFile = utils.download(att.url, targetDir, targetFileName)
+                
+                f.push(fs.open(tempFile))
 
             })
 
