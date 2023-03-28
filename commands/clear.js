@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, SlashCommandIntegerOption, SlashCommandMentionableOption, userMention } = require("discord.js")
+const { SlashCommandBuilder, SlashCommandIntegerOption, SlashCommandMentionableOption, EmbedBuilder, userMention } = require("discord.js")
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -41,7 +41,7 @@ module.exports = {
         await interaction.channel.messages.fetch()
         .then((fetched) => {
 
-            for(msg of fetched.values()) {
+            for (msg of fetched.values()) {
 
                 if (msgs.length == amount) break
 
@@ -49,25 +49,27 @@ module.exports = {
 
                 msgs.push(msg)
 
-                console.log(`[] -> ${msgs.length}`)
-
             }
         })
 
         if (msgs.length == 0) {
             await interaction.reply({content: 'Não foi possível encontrar mensagens com o filtro utilizado. Não apaguei nenhuma mensagem.', ephemeral: true})
-            .then(msg => {setTimeout(() => 
-                msg.delete(), 3000)
-            })
+            .then(msg => { setTimeout(() => msg.delete(), 3000) })
 
             return
         }
 
+        // const embed = new EmbedBuilder()
+        //     .setAuthor({name: interaction.user.tag, iconURL: interaction.user.avatarURL()})
+
         await interaction.channel.bulkDelete(msgs)
         .then(async (deleted) => await interaction.reply(`Apaguei ${deleted.size} mensage${deleted.size > 1 ? "ns" : "m"} de ${userMention(member.id)}.` ))
-        .then(msg => {setTimeout(() => 
-            msg.delete(), 3000)
-        })
-        
+        .then(msg => {setTimeout(() =>  msg.delete(), 3000) })
+     
+        // todo 
+        // enviar as mensagens apagadas em formato de arquivo para o canal de logs
+        // fazer download de dos anexos em um diretório de arquivos temporários, 
+        // enviá-los como parte da nossa mensagem de log, e apagá-los do cache
+
     }
 }
