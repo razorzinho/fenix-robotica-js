@@ -2,8 +2,8 @@ const {ButtonBuilder} = require("discord.js")
 
 module.exports = {
     data: new ButtonBuilder()
-        .setCustomId('ReportButton')
-        .setLabel('Fazer denúncia'),
+        .setCustomId('AutoRoleButton')
+        .setLabel('Escolha seus cargos!'),
 
     async execute(interaction) {
 

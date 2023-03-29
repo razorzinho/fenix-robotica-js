@@ -2,7 +2,7 @@ const {ModalBuilder} = require("discord.js")
 
 module.exports = {
     data: new ModalBuilder()
-        .setCustomId('RoleSelector'),
+        .setCustomId('ReportForm'),
 
     async execute(interaction) {
 
