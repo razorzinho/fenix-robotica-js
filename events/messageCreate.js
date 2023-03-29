@@ -1,5 +1,5 @@
 const {Events, EmbedBuilder, codeBlock, userMention} = require("discord.js")
-const config = require("../config.json")
+const config = require("../config/moderationModule.json")
 
 module.exports = {
     name: Events.MessageCreate,
@@ -11,7 +11,7 @@ module.exports = {
             return 
         }
 
-        if (config.modules.moderation.messageBlockedChannels[message.channel.id]) {
+        if (config.messageBlockedChannels[message.channel.id]) {
             message.delete()
         }
 

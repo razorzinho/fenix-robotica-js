@@ -1,6 +1,6 @@
 const {Events, EmbedBuilder, codeBlock, userMention} = require("discord.js")
 const fs = require('node:fs')
-const config = require("../config.json")
+const config = require("../config/logsConfig.json")
 const utils = require('../utils/download.js')
 
 module.exports = {
@@ -12,7 +12,7 @@ module.exports = {
             return
         }
 
-        const channel = await message.guild.channels.fetch(config.modules.logs.channelId)
+        const channel = await message.guild.channels.fetch(config.channelId)
 
         const embed = new EmbedBuilder()
             .setColor('DarkRed')

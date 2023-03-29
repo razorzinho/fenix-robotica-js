@@ -1,0 +1,64 @@
+{
+    "382520701594107905": {
+        "donation": {
+            "channelId": "1023723546616283167",
+            "type": "form",
+            "ticketMode": "threads",
+            "form": {
+                "fiels": {
+                    "donationTarget": {
+                        "placeHolder": "Você mesmo ou outra pessoa (link do perfil Steam)"
+                    },
+                    "paymentMethod": {
+                        "placeHolder": ""
+                    },
+                    "contactEmail": {
+                        "placeHolder": ""
+                    },
+                    "phoneNumber": {
+                        "placeHolder": ""
+                    }
+                }
+            },
+            "ticketChannel": {
+                "namePattern": "%id-doação-%n-%d",
+                "permissions": {
+                    "roles": [
+                        "936062518462390302"
+                    ]
+                }
+            }
+        }
+    },
+    "1010943771451592714": {
+        "donation": {
+            "channelId": "1087173195435606147",
+            "type": "form",
+            "ticketMode": "threads",
+            "form": {
+                "fiels": {
+                    "donationTarget": {
+                        "placeHolder": "Você mesmo ou outra pessoa (link do perfil Steam)"
+                    },
+                    "paymentMethod": {
+                        "placeHolder": ""
+                    },
+                    "contactEmail": {
+                        "placeHolder": ""
+                    },
+                    "phoneNumber": {
+                        "placeHolder": ""
+                    }
+                }
+            },
+            "ticketChannel": {
+                "namePattern": "%id-doação-%n-%d",
+                "permissions": {
+                    "roles": [
+                        "1041417371417596006"
+                    ]
+                }
+            }
+        }
+    }
+}

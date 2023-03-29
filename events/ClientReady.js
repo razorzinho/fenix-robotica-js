@@ -1,5 +1,5 @@
 const { Events, ActivityType, EmbedBuilder } = require("discord.js")
-const config = require('../config.json')
+const config = require('../config/index.json')
 const fs = require("node:fs")
 const path = require("node:path")
 
@@ -71,17 +71,17 @@ module.exports = {
         client.user.setPresence({activities: [{name: "Sendo desenvolvido", type: ActivityType.Watching}], status: 'dnd'})
 
         // faremos disso um sistema automatizado de envio de mensagens predefinidas de acordo com módulos que as usam
-        for (guildId in config.client.allowed_guild_ids) {
-            let guild = client.guilds.fetch(guildId)
+        // for (guildId in config.client.allowed_guild_ids) {
+        //     let guild = client.guilds.fetch(guildId)
 
-            // console.log(`No servidor ${guild.name}:\n`)
+        //     console.log(`No servidor ${guild.name}:\n`)
         
-            for (main in config.modules.automatic) {
-                console.log(main)
-            }
+        //     for (main in config.modules.automatic) {
+        //         console.log(main)
+        //     }
 
-            // inicializar sistema de tickets de alguma forma...
-        }
+        //     inicializar sistema de tickets de alguma forma...
+        // }
 
             console.log(`Conexão estabelecida! Conectado como ${client.user.tag}.`)
         }
