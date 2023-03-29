@@ -1,0 +1,44 @@
+{ // this is for logging purposes. In the future, we will have an API to receive these objects and log them in a webserver
+  // that webserver will fetch the users involved in the ticket,
+  // and will render a Discord-like thread channel with the contents gathered from here.
+    "closed": false, // this serves to know which components we should create for the control pannel
+    "contents": {
+        "threadId": "1234567890123456789"
+        "author": { //only store some pretty essential info about the author: username (from the creation of it) and ID (in case needed to identify them later)
+            "userTag": "TestUser#1234",
+            "id": "123456789012345678"
+        },
+        "creationDate": 1679982850, // unixTimestamp
+        "history": {
+            "ticketName": "29-03-2023-00-23-TestUser-123456789012345678", // ticket name is to be in the format: {creationdate-username-userId}, for now. This will also apply to the file name, saved in .json format.
+            "messages": { // store ALL message objects sent in this ticket with some basic info about them.
+                {
+                    "id": "1079994034375905340", 
+                    "author": "123456789012345678",
+                    "timeStamp": 1679982855,
+                    "content": {
+                        "text": "Hello, World!",
+                        "embeds": [],
+                        "attachments": [],
+                        "mentions": [],
+                        "isReply": false,
+                        "repliesTo": undefined,
+                    }
+                },
+                {
+                    "id": "",
+                    "author": "123456789012345678",
+                    "timeStamp": 1679982859,
+                    "content": {
+                        "text": "Hello, World, again!",
+                        "embeds": [],
+                        "attachments": [],
+                        "mentions": ["123456789012345678"],
+                        "isReply": true,
+                        "repliesTo": "1079994034375905340",
+                    }
+                }
+            }
+        }
+    }   
+}
