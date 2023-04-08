@@ -1,0 +1,27 @@
+{
+    "translateCommand": {
+        "reply": {
+            "en": "Translation of",
+            "pt-BR": "Tradução de"
+        }
+    },
+    "definitionCommand": {
+        "embedFields": {
+            "pt": {
+                "notFound": "Algo deu errado",
+                "notFoundDescription": "Não foi possível encontrar o termo",
+                "classe": "Classificação(ões) gramatical(is) do termo:",
+                "significados": "Significados do termo:",
+                "etimologia": "Etimologia do termo:",
+                "frases": "Frases de exemplo:",
+                "plural": "Plural do termo (se houver):",
+                "separacaoSilabica": "Separação silábica:",
+                "sinonimos": "Sinônimos do termo:"
+            },
+            "en": {
+                "notFound": "Something went wrong",
+                "notFoundDescription": "Couldn't find a definition for the term"
+            }
+        }
+    }
+}
