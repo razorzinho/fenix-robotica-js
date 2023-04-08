@@ -1,7 +1,11 @@
 {
   "dependencies": {
+    "@vitalets/google-translate-api": "^9.1.0",
+    "dicio-br": "^1.2.1",
     "discord.js": "^14.8.0",
-    "dotenv": "^16.0.3"
+    "dotenv": "^16.0.3",
+    "google-dictionary-api": "^1.0.8",
+    "google-translate-api": "^0.1.1"
   },
   "name": "fenix-robotica",
   "version": "1.0.0",
