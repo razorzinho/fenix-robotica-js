@@ -1,7 +1,7 @@
 const {Events, EmbedBuilder, codeBlock, userMention} = require("discord.js")
 const fs = require('node:fs')
 const config = require("../config/logsConfig.json")
-const utils = require('../utils/download.js')
+const { fetchFromURL } = require('../utils/download.js')
 
 module.exports = {
     name: Events.MessageDelete,

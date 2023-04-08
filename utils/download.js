@@ -3,7 +3,7 @@ const fs = require('fs')
 
 function fetchFromURL(url, dest, saveAs) {
 
-    if (/{http:\/\/}/g.test(url)) {
+    if (/{https:\/\/}/g.test(url)) {
         console.log(`A URL fornecida é inválida. Utilize um link https.`)
     }
 
@@ -24,4 +24,8 @@ function fetchFromURL(url, dest, saveAs) {
     } ).then(() => setTimeout(() => console.log(`${saveAs} está baixado, mas será apagado em alguns`), 120*1000))
 
     return file
+}
+
+module.exports = {
+    fetchFromURL
 }
