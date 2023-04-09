@@ -1,19 +1,4 @@
-// https://regexr.com/
-
-// <span class="item-palavra">(\<.+\>.+\<\/.+\>)|(.+)<\/span><span class="descricao">(.+)<\/span>
-
-
-/* <span class=\"item-palavra\"><strong>matar</strong>andibense</span><span class=\"descricao\"> adj. s.2g.</span>
-
-<span class="item-palavra"><strong>palavra</strong></span><span class="descricao"> s.f.</span>
-
-<span class="item-palavra"><strong>sexo</strong></span><span class="descricao"> s.f.</span>
-
-<span class="item-palavra"><strong>teste</strong></span><span class="descricao"> s.f.</span>
-
-<span class="item-palavra"><strong>mundo</strong></span><span class="descricao"> s.f.</span> */
-
-const termResultFinder = /<span class="item-palavra">(.+)<\/span><span class="descricao">(.+)<\/span>/
+const termResultFinder = /<span class="item-palavra"><strong>(.+)<\/strong><\/span><span class="descricao">(.+)<\/span>|<span class="item-palavra"><strong>(.+)<\/strong>(.+)<\/span><span class="descricao">(.+)<\/span>|<span class="item-palavra">(.+)<\/span><span class="descricao">(.+)<\/span>/i
 
 async function volp(term) {
 
@@ -30,17 +15,30 @@ async function volp(term) {
     
     const values = Object.entries(json.rows)
 
-    for (i = 0; i < json.rows; i++) {
+    for (i = 0; i < json.rows.length; i++) {
 
-        const raw = values[i]
 
-        console.log(raw)
+        const raw = Object.values(values[i][1])
 
         const match = termResultFinder.exec(raw)
 
         if (match) {
 
-            res[match[1]] = match[2]
+            if ( !match[ 3 ] && !match[ 4 ] && !match[ 5 ] && !match[ 6 ] && !match[ 7 ] ) {
+
+                res[ match[ 1 ] ] = match[ 2 ]
+
+                continue 
+            }
+
+            if ( !match[ 1 ] && !match[ 2 ] && !match[ 6 ] && !match[ 7 ]) {
+
+                res[`${match[ 3 ]}${match[ 4 ]}`] = match[5]
+
+                continue 
+            }
+
+            res[ match[ 6 ] ] = match[ 7 ]
 
         } else {
             console.log('Não houve correspondência.')
