@@ -1,6 +1,7 @@
 const {Events, EmbedBuilder, codeBlock, userMention} = require("discord.js")
 const fs = require('node:fs')
 const config = require("../config/logsConfig.json")
+const path = require('node:path')
 const { fetchFromURL } = require('../utils/download.js')
 
 module.exports = {
@@ -25,15 +26,15 @@ module.exports = {
 
         if (message.attachments.size > 0) {
 
-            const targetDir = `${__dirname}/../tempFiles`
+            const targetDir = path.join(__dirname, '../tempFiles')
 
             let f = []
 
             message.attachments.forEach((att) => {
 
-                let targetFileName = `${att.name}-${att.id}`
+                let targetFileName = `${att.id}-${att.name}`
 
-                let tempFile = utils.download(att.url, targetDir, targetFileName)
+                let tempFile = fetchFromURL(att.url, targetDir, targetFileName)
                 
                 f.push(fs.open(tempFile))
 
