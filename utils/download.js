@@ -1,5 +1,6 @@
 const https = require('https') // or 'https' for https:// URLs
 const fs = require('fs')
+const path = require('node:path')
 
 function fetchFromURL(url, dest, saveAs) {
 
@@ -7,7 +8,9 @@ function fetchFromURL(url, dest, saveAs) {
         console.log(`A URL fornecida é inválida. Utilize um link https.`)
     }
 
-    const file = fs.createWriteStream(`${dest}/${saveAs}`)
+    console.log(path.join(dest, saveAs))
+
+    const file = fs.createWriteStream(path.join(dest, saveAs))
     const request = https.get(url, function(response) {
         response.pipe(file)
         console.log(`Obtendo arquivo ${saveAs} do endereço ${url}...`)
@@ -15,13 +18,10 @@ function fetchFromURL(url, dest, saveAs) {
         // after download completed close filestream
         file.on("finish", () => {
             file.close()
-            console.log(``)
+            console.log(`Arquivo baixado.`)
         } )
-        .catch((error) => 
-            console.log(`Algo deu errado ao tentar fazer o download do arquivo. Verifique a URL e os parâmetros passados.\n${error}`)
-        )
 
-    } ).then(() => setTimeout(() => console.log(`${saveAs} está baixado, mas será apagado em alguns`), 120*1000))
+    } )
 
     return file
 }

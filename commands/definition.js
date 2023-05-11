@@ -1,8 +1,8 @@
-const {SlashCommandBuilder, EmbedBuilder, SlashCommandStringOption} = require("discord.js")
+const { SlashCommandBuilder, EmbedBuilder, SlashCommandStringOption, Embed } = require("discord.js")
 const dicio = require("dicio-br")
 const googleDictionaryApi = require("google-dictionary-api")
 const config = require('../config/translation.json')
-const {volp} = require('../utils/volp')
+const { volp } = require('../utils/volp')
 
 let res = []
 
@@ -27,10 +27,13 @@ const Dicts = {
     },
     'volp': async function(term) {
 
-        const req = await volp(term)
+        const req = volp(term)
 
         if (req.status == 500) {
 
+            res = "notFound"
+
+            return res
         }
 
     },
@@ -56,41 +59,37 @@ function buildEmbedFromResult(interaction, result, locale) {
 
     let fields = []
 
-    if (result !== 'notFound') {
-        for (const [key, value] of resultObj) {
+    for (const [key, value] of resultObj) {
 
-            console.log(key)
+        console.log(key)
 
-            if (key == 'status') continue
+        if (key == 'status') continue
 
-            if (Array.isArray(key)) {
-                let keyString = ''
+        if (Array.isArray(key)) {
+            let keyString = ''
 
-                const iteration = Object.entries(key)
-                
-                let counter = 1
+            const iteratable = Object.entries(key)
+            
+            let counter = 1
 
-                for (k = 1; k <= iteration.length; k++) {
+            for (k = 1; k <= iteratable.length; k++) {
 
-                    if (k == iteration.length) {
+                if (k == iteratable.length) {
 
-                        keyString += iteration[k] 
+                    keyString += iteratable[k] 
 
-                        continue
+                    continue
 
-                    }
-
-                    keyString += `${iteration[k]} \n`
-
-                    counter++
                 }
+
+                keyString += `${iteratable[k]} \n`
+
+                counter++
             }
-
-            fields.push({name: config.definitionCommand.embedFields[key], value: value, inline: false})
-
         }
-    } else {
-        fields.push({ name: config.definitionCommand.embedFields[locale].notFound, value: `${config.definitionCommand.embedFields[locale].notFoundDescription} ${interaction.options.getString('term')}` })
+
+        fields.push({name: config.definitionCommand.embedFields[key], value: value, inline: false})
+
     }
 
     const embed = new EmbedBuilder()
@@ -100,7 +99,7 @@ function buildEmbedFromResult(interaction, result, locale) {
         .setTimestamp()
 
     return embed
-} 
+}
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -110,7 +109,6 @@ module.exports = {
         })
         .setDescription('Gets a term definition from the selected dictionary.')
         .setDescriptionLocalizations({
-            'en-GB': 'Fetches a term definition from the selected dictionary.',
             'pt-BR': 'Busca pela definição de um termo no dicionário escolhido.',
         })
         .addStringOption(
@@ -137,8 +135,6 @@ module.exports = {
                 })
                 .setChoices(
                     {name: 'Portuguese', value: 'pt'},
-                    // {name: 'Portuguese (Brasil)', value: 'ptBR'},
-                    // {name: 'English US', value: 'enUS'},
                     {name: 'English', value: 'en'},
                 )
                 .setRequired(true)
@@ -170,6 +166,7 @@ module.exports = {
             
         const res = await Dicts[dict](term)
 
+        console.log(res)
 
         if (res.status != 200) {
             res = 'notFound'
@@ -180,7 +177,14 @@ module.exports = {
 
         console.log(res)
 
-        const embed = buildEmbedFromResult(interaction, res, language)
+        if (res == 'notFound') {
+
+            const embed = new EmbedBuilder()
+                                .setAuthor()
+
+        } else {
+            const embed = buildEmbedFromResult(interaction, res, language)
+        }
 
         await interaction.reply({embeds: [embed]})
 

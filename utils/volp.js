@@ -8,43 +8,40 @@ async function volp(term) {
 
     const json = await request.json()
 
-    if (json.rows < 1) {
+    if ( json.rows < 1 ) {
         res.status = 500
         res.message = 'Nenhum resultado encontrado com o parâmetro de busca utilizado.'
     }
     
+    res.status = 200
+
     const values = Object.entries(json.rows)
 
     for (i = 0; i < json.rows.length; i++) {
 
 
-        const raw = Object.values(values[i][1])
+        const raw = Object.values( values[ i ][ 1 ] )
 
         const match = termResultFinder.exec(raw)
 
-        if (match) {
+        if (!match) continue
 
-            if ( !match[ 3 ] && !match[ 4 ] && !match[ 5 ] && !match[ 6 ] && !match[ 7 ] ) {
 
-                res[ match[ 1 ] ] = match[ 2 ]
+        if ( !match[ 3 ] && !match[ 4 ] && !match[ 5 ] && !match[ 6 ] && !match[ 7 ] ) {
 
-                continue 
-            }
+            res[ match[ 1 ] ] = match[ 2 ]
 
-            if ( !match[ 1 ] && !match[ 2 ] && !match[ 6 ] && !match[ 7 ]) {
-
-                res[`${match[ 3 ]}${match[ 4 ]}`] = match[5]
-
-                continue 
-            }
-
-            res[ match[ 6 ] ] = match[ 7 ]
-
-        } else {
-            console.log('Não houve correspondência.')
-            
-            continue
+            continue 
         }
+
+        if ( !match[ 1 ] && !match[ 2 ] && !match[ 6 ] && !match[ 7 ]) {
+
+            res[ `${match[ 3 ]}${match[ 4 ]}` ] = match[ 5 ]
+
+            continue 
+        }
+
+        res[ match[ 6 ] ] = match[ 7 ]
         
     }
 

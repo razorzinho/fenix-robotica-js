@@ -1,0 +1,28 @@
+const { SlashCommandBuilder, EmbedBuilder, SlashCommandStringOption } = require('discord.js')
+const { eventFiles } = require('../index')
+
+module.exports = {
+    data: new SlashCommandBuilder()
+        .setName('Source Code')
+        .setDescription('See the specified component\'s source code directly from Discord.')
+        .setNameLocalizations({
+            'pt-BR': 'Código-fonte'
+        })
+        .setDescriptionLocalization({
+            'pt-BR': 'Veja o código-fonte de um componente específico diretamente do Discord.'
+        })
+        .addStringOption(
+            new SlashCommandStringOption()
+                .setName('component')
+                .setDescription('The component of the code-base to see its source code')
+                .setChoices({
+                    
+                })
+        ),
+
+    async execute(interaction) {
+        const component = interaction.command.options.getString('component')
+
+
+    }
+}
