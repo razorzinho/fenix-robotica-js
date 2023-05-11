@@ -10,7 +10,9 @@ module.exports = {
 
         if (interaction.isChatInputCommand()) {
 
-            const command = interaction.client.commands.get(interaction.commandName)
+            const { commands } = interaction.client
+
+            const command = commands.get(interaction.commandName)
 
             if (!command) {
                 console.error(`Comando '${interaction.commandName}' não encontrado.`)
@@ -79,7 +81,7 @@ module.exports = {
 
         // Menus de seleção
 
-        if (interaction.isSelectMenu()) {
+        if (interaction.isStringSelectMenu()) {
 
             const { selectMenus } = interaction.client
             const { customId } = interaction

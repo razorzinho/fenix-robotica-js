@@ -36,9 +36,9 @@ const componentsPath = path.join(__dirname, "components")
 const componentFolders = fs.readdirSync(componentsPath)
 
 for (const folder of componentFolders) {
-    const componentFiles = fs.readdirSync(path.join(componentsPath, folder).filter(
+    const componentFiles = fs.readdirSync(path.join(componentsPath, folder)).filter(
         (file) => file.endsWith('.js')
-    ))
+    )
 
     const { buttons, selectMenus, modals } = client
 
@@ -54,7 +54,7 @@ for (const folder of componentFolders) {
         case 'selectMenus':
             for (const file of componentFiles) {
                 const selectMenu = require(path.join(componentsPath, folder, file))
-                selectMenus.set(menu.data.name, selectMenu)
+                selectMenus.set(selectMenu.data.name, selectMenu)
             }
 
             break
@@ -62,7 +62,7 @@ for (const folder of componentFolders) {
         case 'modals':
             for (const file of componentFiles) {
                 const modal = require(path.join(componentsPath, folder, file))
-                modals.set(menu.data.name, modal)
+                modals.set(modal.data.name, modal)
             }
 
             break 
