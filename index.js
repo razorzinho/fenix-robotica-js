@@ -7,7 +7,9 @@ const path = require("node:path")
 const client = new Client({ intents: [3276799] })
 
 client.commands = new Collection()
-// client.components = new Collection()
+client.buttons = new Collection()
+client.selectMenus = new Collection()
+client.modals = new Collection()
 
 const eventsPath = path.join(__dirname, "events")
 const eventFiles = fs.readdirSync(eventsPath).filter(x => x.endsWith('.js'))
@@ -28,23 +30,48 @@ for (const eFile of eventFiles) {
     client.once(event.name, (...args) => event.execute(...args))
 }
 
-// const componentsPath = path.join(__dirname, "components")
-// const componentFiles = fs.readdirSync(componentsPath).filter(x => x.endsWith('.js'))
+console.log('Inicializando componentes...')
 
-// console.log('Inicializando componentes...')
+const componentsPath = path.join(__dirname, "components")
+const componentFolders = fs.readdirSync(componentsPath)
 
-// for (const cFile of componentFiles) {
-//     const componentPath = path.join(eventsPath, cFile)
+for (const folder of componentFolders) {
+    const componentFiles = fs.readdirSync(path.join(componentsPath, folder).filter(
+        (file) => file.endsWith('.js')
+    ))
 
-//     const component = require(componentPath)
+    const { buttons, selectMenus, modals } = client
 
-//     if (!component.data || !component.execute) {
-//         console.log(`${cFile.replace('.js', '')} não é um componente válido. Ignorando.`)
+    switch (folder) {
+        case 'buttons':
+            for (const file of componentFiles) {
+                const button = require(path.join(componentsPath, folder, file))
+                buttons.set(button.data.name, button)
+            }
 
-//         continue
-//     }
+            break
 
-//     client.components.set(components.data.customId, components)
-// }
+        case 'selectMenus':
+            for (const file of componentFiles) {
+                const selectMenu = require(path.join(componentsPath, folder, file))
+                selectMenus.set(menu.data.name, selectMenu)
+            }
+
+            break
+
+        case 'modals':
+            for (const file of componentFiles) {
+                const modal = require(path.join(componentsPath, folder, file))
+                modals.set(menu.data.name, modal)
+            }
+
+            break 
+        
+        default:
+
+            break
+    }
+
+}
 
 client.login(process.env.TOKEN)

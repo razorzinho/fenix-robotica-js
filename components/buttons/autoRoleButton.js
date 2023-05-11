@@ -5,6 +5,8 @@ module.exports = {
         .setCustomId('AutoRoleButton')
         .setLabel('Escolha seus cargos!'),
 
+    permissions: [],
+
     async execute(interaction) {
 
     }
