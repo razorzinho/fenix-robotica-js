@@ -6,7 +6,7 @@
     "discord.js": "^14.8.0",
     "dotenv": "^16.0.3",
     "google-dictionary-api": "^1.0.8",
-    "google-translate-api": "^0.1.1"
+    "google-translate-api": "^2.3.0"
   },
   "name": "fenix-robotica",
   "version": "1.0.0",
