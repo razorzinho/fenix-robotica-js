@@ -17,10 +17,6 @@ module.exports = {
             .setRequired(false)
         ),
 
-    permissions: [
-        "1041417371417596006"
-    ],
-
     async execute(interaction) {
 
         const amount = interaction.options.getInteger('quantidade')

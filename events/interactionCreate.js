@@ -1,4 +1,5 @@
-const {Events} = require("discord.js")
+const { Events } = require("discord.js")
+const config = require('../config/index.json')
 
 module.exports = {
     name: Events.InteractionCreate,
@@ -10,11 +11,19 @@ module.exports = {
 
         if (interaction.isChatInputCommand()) {
 
+            if (config.commands.disabled[interaction.name]) {
+
+                await interaction.reply('Erro! Este comando foi desabilitado pelo dono do servidor!')
+
+                return
+            }
+
             const { commands } = interaction.client
 
             const command = commands.get(interaction.commandName)
 
             if (!command) {
+ 
                 console.error(`Comando '${interaction.commandName}' não encontrado.`)
 
                 return
@@ -24,12 +33,15 @@ module.exports = {
 
             if (!member) {
 
+                console.log('Algo deu errado! O membro que tentou utilizar o comando é inválido!')
+
                 return
             }
 
-            const allowedRoles = command.permissions
+            const allowedRoles = config.commands.allowedRoles[interaction.commandName]
 
-            if (command.permissions) {
+            if (allowedRoles) {
+ 
                 for (const roleID in allowedRoles) {
 
                     if (member.roles.cache.some(role => role.id === allowedRoles[roleID])) {
@@ -37,7 +49,7 @@ module.exports = {
                         break
                     }
 
-                    await interaction.reply({content: `Você não tem permissão para utilizar este comando, ${interaction.user.username}`, ephemeral: true})
+                    await interaction.reply({content: `Você não tem permissão para utilizar este comando, ${interaction.user.username}!`, ephemeral: true})
 
                     return
                 }
@@ -45,12 +57,17 @@ module.exports = {
             
         
             try {
-                await command.execute(interaction)
+
+                await command.execute(interaction)           
             } catch (error) {
+            
                 console.error(error);
+            
                 if (interaction.replied || interaction.deferred) {
+            
                     await interaction.followUp({ content: 'Houve um erro durante a execução deste comando! Tente novamente mais tarde. Caso o erro persista, entre em contato com o desenvolvedor.', ephemeral: true })
                 } else {
+            
                     await interaction.reply({ content: 'Houve um erro ao tentar executar este comando!', ephemeral: true })
                 }
             }
@@ -58,7 +75,6 @@ module.exports = {
         }
 
         // Lidar com componentes de mensagem
-
 
         // Botões
 
@@ -71,9 +87,13 @@ module.exports = {
             if (!button) return new Error("O botão solicitado não é um componente válido do cliente.")
 
             try {
+
                 button.execute(interaction)
             } catch(err) {
-                console.log(err)
+            
+                await interaction.reply('Ocorreu algum erro durante a execução deste componente. Tente novamente, ou contate o desenvolvedor.')
+
+                console.log(err)           
             }
 
             return 
@@ -90,8 +110,12 @@ module.exports = {
             if (!selectMenu) return new Error("O botão solicitado não é um componente válido do cliente.")
 
             try {
+            
                 selectMenu.execute(interaction)
             } catch(err) {
+            
+                await interaction.reply('Ocorreu algum erro durante a execução deste componente. Tente novamente, ou contate o desenvolvedor.')
+                
                 console.log(err)
             }
 
@@ -109,8 +133,12 @@ module.exports = {
             if (!modal) return new Error("O botão solicitado não é um componente válido do cliente.")
 
             try {
+            
                 modal.execute(interaction)
             } catch(err) {
+            
+                await interaction.reply('Ocorreu algum erro durante a execução deste componente. Tente novamente, ou contate o desenvolvedor.')
+
                 console.log(err)
             }
 
