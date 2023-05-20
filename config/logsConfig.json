@@ -1,3 +1,10 @@
 {
-    "channelId": "1087535946850897970"
+    "1010943771451592714": {
+        "generalLogsChannelId": "1087535946850897970",
+        "memberChangeLogsChannelId": "1041432403765366906"
+    },
+    "382520701594107905": {
+        "generalLogsChannelId": "564311846459539466",
+        "memberChangeLogsChannelId": "1108927835558641784"
+    }
 }
