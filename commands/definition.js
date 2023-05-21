@@ -17,13 +17,11 @@ const Dicts = {
             res = "notFound"
 
             return res
-
         }
 
         res = req
 
-        return res
-        
+        return res       
     },
     'volp': async function(term) {
 
@@ -35,7 +33,6 @@ const Dicts = {
 
             return res
         }
-
     },
     'googleDict': async function(term) {
         googleDictionaryApi.search(term, 'en').then((result) => {
@@ -50,6 +47,12 @@ const Dicts = {
         )
 
         return res
+    },
+    'urbanDict': async function(term) {
+
+        res = 'WIP'
+
+        return res
     }
 }
 
@@ -59,38 +62,44 @@ function buildEmbedFromResult(interaction, result, locale) {
 
     let fields = []
 
-    for (const [key, value] of resultObj) {
 
-        console.log(key)
+    // this code here is pretty much broken... Trying another way around its issues...
+    // for (const [key, value] of resultObj) {
 
-        if (key == 'status') continue
+    //     console.log(key)
 
-        if (Array.isArray(key)) {
-            let keyString = ''
+    //     if (key == 'status') continue
 
-            const iteratable = Object.entries(key)
+    //     if (Array.isArray(key)) {
+
+    //         let keyString = ''
+
+    //         const iteratable = Object.entries(key)
             
-            let counter = 1
+    //         let counter = 1
 
-            for (k = 1; k <= iteratable.length; k++) {
+    //         for (k = 1; k <= iteratable.length; k++) {
 
-                if (k == iteratable.length) {
+    //             if (k == iteratable.length) {
 
-                    keyString += iteratable[k] 
+    //                 keyString += iteratable[k] 
 
-                    continue
+    //                 continue
+    //             }
 
-                }
+    //             keyString += `${iteratable[k]} \n`
 
-                keyString += `${iteratable[k]} \n`
+    //             counter++
+    //         }
 
-                counter++
-            }
-        }
+    //         fields.push({name: config.definitionCommand.embedFields[key], value: keyString, inline: false})
 
-        fields.push({name: config.definitionCommand.embedFields[key], value: value, inline: false})
+    //         continue
+    //     }
 
-    }
+    //     fields.push({name: config.definitionCommand.embedFields[key], value: value, inline: false})
+    // }
+    // Should prolly write it down from scratch
 
     const embed = new EmbedBuilder()
         .setColor(result['status'] == 200 ? 'DarkGreen' : 'DarkRed')
@@ -154,6 +163,7 @@ module.exports = {
                     {name: 'Volp (Pt-BR)', value: 'volp'},
                     // {name: 'Priberam (Pt-BR)', value: 'priberam'},
                     {name: 'Google Dictionary (any)', value: 'googleDict'},
+                    {name: 'Urban Dictionary', value: 'urbanDict'}
                 )
                 .setRequired(true)
         ),
@@ -169,24 +179,15 @@ module.exports = {
         console.log(res)
 
         if (res.status != 200) {
-            res = 'notFound'
+
+            const embed = new EmbedBuilder()
+                .setAuthor()
 
             return
         }
 
-
-        console.log(res)
-
-        if (res == 'notFound') {
-
-            const embed = new EmbedBuilder()
-                                .setAuthor()
-
-        } else {
-            const embed = buildEmbedFromResult(interaction, res, language)
-        }
+        const embed = buildEmbedFromResult(interaction, res, language)
 
         await interaction.reply({embeds: [embed]})
-
     }
 }
