@@ -5,14 +5,14 @@ const path = require("node:path")
 
 function fetchGuildNames(client, guilds) {
 
-    for (item of guilds.values()) {
+    guilds.forEach( (item) => {
 
         if (!config.client.allowed_guild_ids[item.id]) {
 
             client.guilds.fetch(item.id).then( (guild) => {
 
-                guild.channels.fetch().then((col) => {
-                    let channel = col.find(x => x.isTextBased())
+                guild.channels.fetch().then((guildChannels) => {
+                    let channel = guildChannels.find(x => x.isTextBased())
 
                     channel.send("Eu não deveria estar aqui. Adeus. Sayonara. Adios. Goodbye.")
                 })
@@ -20,15 +20,9 @@ function fetchGuildNames(client, guilds) {
                 console.log(`Estou saindo de um servidor em que não deveria estar: ${guild.name} (${guild.id})\nNão está na lista de servidores permitidos.`)
 
                 guild.leave()
-
             } )
-
-            continue
-
         }
-
-    }
-
+    } )
 }
 
 module.exports = {
@@ -42,14 +36,14 @@ module.exports = {
 
         client.guilds.fetch().then((guilds) => {
 
-            fetchGuildNames(client, guilds)
-            
+            fetchGuildNames(client, guilds)  
         })
 
         const commandsPath = path.join(__dirname, '../commands')
         const commandFiles = fs.readdirSync(commandsPath).filter(x => x.endsWith('.js'))
 
         let commandsData = []
+        
         for (const cFile of commandFiles) {
             const commandPath = path.join(commandsPath, cFile)
 
@@ -70,20 +64,20 @@ module.exports = {
 
         client.user.setPresence({activities: [{name: "Sendo desenvolvido", type: ActivityType.Watching}], status: 'dnd'})
 
-        // faremos disso um sistema automatizado de envio de mensagens predefinidas de acordo com módulos que as usam
+        // faremos disto um sistema automatizado de envio de mensagens predefinidas de acordo com módulos que as usam
         // for (guildId in config.client.allowed_guild_ids) {
         //     let guild = client.guilds.fetch(guildId)
 
         //     console.log(`No servidor ${guild.name}:\n`)
         
         //     for (main in config.modules.automatic) {
+        //         
         //         console.log(main)
         //     }
 
         //     inicializar sistema de tickets de alguma forma...
         // }
 
-            console.log(`Conexão estabelecida! Conectado como ${client.user.tag}.`)
-        }
-
+        console.log(`Conexão estabelecida! Conectado como ${client.user.tag}.`)
     }
+}
